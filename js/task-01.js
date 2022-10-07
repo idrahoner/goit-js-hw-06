@@ -30,8 +30,7 @@ const showDataItem = (initialList, itemsList) => {
 
   console.log(`Number of categories: ${numberOfCategories}`);
   categoriesList.forEach(({ textTitle, numberItem }) =>
-    console.log(`Category: ${textTitle}
-Elements: ${numberItem}`)
+    console.log(`Category: ${textTitle} \nElements: ${numberItem}`)
   );
 };
 
