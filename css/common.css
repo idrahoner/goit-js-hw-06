@@ -57,3 +57,15 @@ button {
     flex-basis: calc((100% - 40px) / 3);
   }
 }
+
+.boxes__wrapper {
+  position: relative;
+}
+
+.boxes__item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+}
