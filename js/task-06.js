@@ -8,35 +8,20 @@
 //  - Для додавання стилів використовуй CSS - класи valid і invalid,
 //    які ми вже додали у вихідні файли завдання.
 
-function borderColorSwitcher({ element, validClass, invalidClass } = {}) {
-  let inputValue = 0;
-  const requestedNumber = Number(element.dataset.length);
-  const removeClass = () => {
-    element.classList.remove(validClass);
-    element.classList.remove(invalidClass);
-  };
+const inputEl = document.querySelector("#validation-input");
+const validClass = "valid";
+const invalidClass = "invalid";
+const requestedLength = Number(inputEl.dataset.length);
 
-  element.addEventListener("input", (event) => {
-    inputValue = event.currentTarget.value.length;
-  });
-  element.addEventListener("focus", () => {
-    removeClass();
-  });
-  element.addEventListener("blur", () => {
-    if (inputValue === 0) {
-      removeClass();
-    } else if (inputValue === requestedNumber) {
-      element.classList.add(validClass);
-    } else {
-      element.classList.add(invalidClass);
-    }
-  });
+inputEl.addEventListener("blur", checkValid);
+
+function checkValid(event) {
+  const element = event.currentTarget;
+  const currentLength = event.currentTarget.value.length;
+
+  element.classList.remove("valid", "invalid");
+
+  return currentLength === requestedLength
+    ? element.classList.add("valid")
+    : element.classList.add("invalid");
 }
-
-const refs = {
-  element: document.querySelector("#validation-input"),
-  validClass: "valid",
-  invalidClass: "invalid",
-};
-
-borderColorSwitcher(refs);
