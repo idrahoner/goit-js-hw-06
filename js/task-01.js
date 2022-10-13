@@ -17,21 +17,18 @@
 
 // ==========================================
 
-const initialList = document.querySelector("#categories");
 const itemsList = Array.from(document.querySelectorAll(".item"));
 
-const showDataItem = (initialList, itemsList) => {
-  const numberOfCategories = initialList.children.length;
-
-  const categoriesList = itemsList.map((element) => ({
-    textTitle: element.firstElementChild.textContent,
-    numberItem: element.lastElementChild.children.length,
-  }));
+const showDataItem = (itemsList) => {
+  const numberOfCategories = itemsList.length;
 
   console.log(`Number of categories: ${numberOfCategories}`);
-  categoriesList.forEach(({ textTitle, numberItem }) =>
-    console.log(`Category: ${textTitle} \nElements: ${numberItem}`)
-  );
+
+  itemsList.forEach((element) => {
+    const textTitle = element.firstElementChild.textContent;
+    const numberItem = element.lastElementChild.children.length;
+    console.log(`Category: ${textTitle} \nElements: ${numberItem}`);
+  });
 };
 
-showDataItem(initialList, itemsList);
+showDataItem(itemsList);
