@@ -12,15 +12,23 @@
 
 const formEl = document.querySelector("form.login-form");
 
-formEl.addEventListener("submit", (event) => {
+formEl.addEventListener("submit", checkValid);
+
+function checkValid(event) {
   event.preventDefault();
-  const { email, password } = event.currentTarget.elements;
-  const formValues = {};
-  if (!email.value || !password.value) {
+
+  const { email, password } = event.currentTarget;
+  const formatedMail = email.value.trim();
+  const formatedPswd = password.value.trim();
+
+  if (!formatedMail || !formatedPswd) {
     return alert("All fields must be filled!");
   }
-  formValues.email = email.value;
-  formValues.password = password.value;
+
+  const formValues = {
+    email: formatedMail,
+    password: formatedPswd,
+  };
   console.log(formValues);
   event.currentTarget.reset();
-});
+}
