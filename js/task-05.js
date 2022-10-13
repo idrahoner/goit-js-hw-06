@@ -5,10 +5,10 @@
 const inputEl = document.querySelector("#name-input");
 const nameOutEl = document.querySelector("#name-output");
 
-inputEl.addEventListener("input", (event) => {
-  if (event.currentTarget.value === "") {
-    nameOutEl.textContent = "Anonymous";
-  } else {
-    nameOutEl.textContent = event.currentTarget.value;
-  }
-});
+inputEl.addEventListener("input", validateInput);
+
+function validateInput(event) {
+  const inputValue = event.currentTarget.value.trim();
+
+  nameOutEl.textContent = !inputValue ? "Anonymus" : inputValue;
+}
