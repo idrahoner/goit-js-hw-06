@@ -10,5 +10,5 @@ inputEl.addEventListener("input", validateInput);
 function validateInput(event) {
   const inputValue = event.currentTarget.value.trim();
 
-  nameOutEl.textContent = !inputValue ? "Anonymus" : inputValue;
+  nameOutEl.textContent = !inputValue ? "Anonymous" : inputValue;
 }
