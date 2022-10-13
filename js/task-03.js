@@ -21,18 +21,14 @@ const images = [
 
 const galleryEl = document.querySelector(".gallery");
 
-const itemElements = images.map(({ url, alt }) => {
-  const newItem = document.createElement("li");
-  const newImg = document.createElement("img");
+const itemElements = images
+  .map(({ url, alt }) => {
+    return `
+<li class="gallery__item">
+  <img class="gallery__image" src="${url}" alt="${alt}" width="300" />
+</li>
+`;
+  })
+  .join("");
 
-  newItem.classList.add("gallery__item");
-  newImg.classList.add("gallery__image");
-  newImg.src = url;
-  newImg.alt = alt;
-  newImg.width = 300;
-
-  newItem.append(newImg);
-  return newItem;
-});
-
-galleryEl.append(...itemElements);
+galleryEl.insertAdjacentHTML("beforeend", itemElements);
